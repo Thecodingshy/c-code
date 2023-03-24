@@ -32,6 +32,8 @@ void TestList1()
 	ListPopFront(phead);
 	ListPopFront(phead);
 	ListPopFront(phead);
+
+	ListDestory(phead);
 }
 
 void TestList2()
@@ -45,6 +47,8 @@ void TestList2()
 	ListNode* pos = ListFind(phead, 3);
 	ListInsert(pos, 30);
 	ListPrint(phead);
+
+	ListDestory(&phead);
 }
 int main()
 {

@@ -9,6 +9,7 @@ void QueueInit(Queue* pq)
 
 }
 
+
 void QueueDestory(Queue* pq)
 {
 	assert(pq);
@@ -19,25 +20,33 @@ void QueueDestory(Queue* pq)
 		free(cur);
 		cur = next;
 	}
-	pq->head = pq->tail = NULL;
+	pq->head = pq->tail = NULL;	//处理一直不动的指针pq->tail
 }
+
+
 void QueuePush(Queue* pq, QDataType x)
 {
 	assert(pq);
 	QueueNode* newnode = (QueueNode*)malloc(sizeof(QueueNode));
-	newnode->data = x;
-	newnode->next = NULL;
+	if (newnode != NULL)
+	{
+		newnode->data = x;
+		newnode->next = NULL;
 
-	if (pq->head == NULL)
-	{
-		pq->head = pq->tail = newnode;
+		if (pq->head == NULL)
+		{
+			pq->head = pq->tail = newnode;
+		}
+		else
+		{
+			pq->tail->next = newnode;
+			pq->tail = newnode;
+		}
 	}
-	else
-	{
-		pq->tail->next = newnode;
-		pq->tail = newnode;
-	}
+	printf("开辟失败");
+	exit(-1);
 }
+
 
 void QueuePop(Queue* pq)
 {
@@ -53,6 +62,7 @@ void QueuePop(Queue* pq)
 	}
 }
 
+
 QDataType QueueFront(Queue* pq)
 {
 	assert(pq);
@@ -61,6 +71,7 @@ QDataType QueueFront(Queue* pq)
 	return pq->head->data;
 }
 
+
 QDataType QueueBack(Queue* pq)
 {
 	assert(pq);
@@ -68,6 +79,7 @@ QDataType QueueBack(Queue* pq)
 
 	return pq->tail->data;
 }
+
 
 int QueueSize(Queue* pq)
 {
@@ -83,8 +95,9 @@ int QueueSize(Queue* pq)
 	return count;
 }
 
+
 bool QueueEmpty(Queue* pq)
 {
 	assert(pq);
-	return pq->head == NULL;	//判断是否为空，为空返回；不为空返回1
+	return pq->head == NULL;	//pq->head==NULL是真的，返回true；pq->head==NULL是假的，返回false；
 }

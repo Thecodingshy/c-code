@@ -21,7 +21,5 @@ void Text1()
 int main()
 {
 	Text1();
-
-
 	return 0;
 }

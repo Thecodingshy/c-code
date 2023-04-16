@@ -51,7 +51,7 @@ void AdjustDown(HPDataType* a, int size, int parent)		//最简洁的写法！！！
 	while (child < size)		//开始默认是左孩子，但是右孩子不一定存在
 	{
 		if ( child+1<size && a[child + 1] < a[child])
-		{
+		{ 
 			child++;
 		}
 
@@ -103,7 +103,7 @@ void HeapPush(HP* php, HPDataType x)
 		HPDataType* tmp = (HPDataType*)realloc(php->a,sizeof(HPDataType) * newcapacity);
 		if (tmp == NULL)
 		{
-			printf("realloc fail");
+			printf("realloc fail\n");
 			exit(-1);
 		}
 		php->a = tmp;

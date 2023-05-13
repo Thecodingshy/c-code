@@ -18,3 +18,8 @@
 //
 //    return 0;
 //}
+
+//#define _ADDRESSOF(v) (&(v))
+//#define __crt_va_arg(ap, t)
+//#define __crt_va_start_a(ap, v) 
+//#define __crt_va_start_a
